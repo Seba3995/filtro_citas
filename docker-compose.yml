@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  filtro_citas:
+    build: .
+    container_name: filtro_citas_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
