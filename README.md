@@ -63,3 +63,31 @@ docker-compose up --build
 > 🔗 Documentación interactiva de FastAPI 
 👉 [http://localhost:8000/docs](http://localhost:8000/docs)
 
+
+## 📁 Estructura del Proyecto
+
+```bash
+filtro_citas/
+├── app/
+│   ├── __init__.py                    # Inicializa el módulo Python para la app
+│   ├── filter_engine.py               # Motor de reglas: lógica central para evaluar y filtrar citas
+│   ├── main.py                        # Entrada FastAPI: expone la API para filtrar citas
+│   ├── models.py                      # Modelos Pydantic para validación y documentación de datos
+│   ├── rules/
+│   │   └── rules.json                 # Definición de reglas (mini-DSL) modificables sin cambiar el código
+│   ├── sample_data/
+│   │   └── citas_ejemplo.json         # Datos de ejemplo para pruebas funcionales/manuales
+│   └── tests/
+│       └── test_filter_engine.py      # Pruebas unitarias del motor de filtrado (automatización y cobertura)
+│
+├── imgs/
+│   ├── arquitectura_general.jpg       # Diagrama general del flujo ETL y contexto de integración
+│   └── zoom_filtrar_citas.jpg         # Detalle de la arquitectura interna del componente Filtrar Citas
+│
+├── .gitignore                         
+├── docker-compose.yml                 # Orquestador para levantar servicios de la solución
+├── Dockerfile                         # Imagen Docker del microservicio para despliegue portátil
+├── LICENSE                            
+├── README.md                          
+└── requirements.txt                   # Dependencias Python necesarias para reproducir el entorno
+```
