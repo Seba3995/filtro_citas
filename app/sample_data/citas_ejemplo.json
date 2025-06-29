@@ -1,0 +1,20 @@
+[
+  {
+    "fecha_cita": "2025-07-01",
+    "especialidad": "cardiología",
+    "tipo_atencion": "primera vez",
+    "edad": 68,
+    "estado_cita": "confirmada",
+    "rut_profesional": "15678432-9",
+    "nombre_paciente": "Ana Torres"
+  },
+  {
+    "fecha_cita": "2025-07-01",
+    "especialidad": "pediatría",
+    "tipo_atencion": "control",
+    "edad": 12,
+    "estado_cita": "confirmada",
+    "rut_profesional": "12345678-9",
+    "nombre_paciente": "Luis Castillo"
+  }
+]

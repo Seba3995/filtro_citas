@@ -1,0 +1,127 @@
+[
+  {
+    "id": "R1",
+    "nombre": "Contactar cardiología 2 días antes solo primera vez",
+    "autor": "Customer Success",
+    "fecha_creacion": "2024-06-28T10:00:00-04:00",
+    "ultima_modificacion": "2024-06-28T15:00:00-04:00",
+    "activo": true,
+    "condiciones": {
+      "and": [
+        {"campo": "especialidad", "operador": "==", "valor": "cardiología"},
+        {"campo": "dias_antes", "operador": "==", "valor": 2},
+        {"campo": "tipo_atencion", "operador": "==", "valor": "primera vez"}
+      ]
+    },
+    "accion": {
+      "tipo": "contactar",
+      "via": "WhatsApp",
+      "plantilla": "template_general_1"
+    }
+  },
+  {
+    "id": "R2",
+    "nombre": "Dr. Martínez, avisar 1 día antes excepto tercera edad",
+    "autor": "Customer Success",
+    "fecha_creacion": "2024-06-28T10:00:00-04:00",
+    "ultima_modificacion": "2024-06-28T15:00:00-04:00",
+    "activo": true,
+    "condiciones": {
+      "and": [
+        {"campo": "rut_profesional", "operador": "==", "valor": "9111666-9"},
+        {"campo": "dias_antes", "operador": "==", "valor": 1},
+        {
+          "not": [
+            {"campo": "edad", "operador": ">=", "valor": 65}
+          ]
+        }
+      ]
+    },
+    "accion": {
+      "tipo": "contactar",
+      "via": "WhatsApp",
+      "plantilla": "template_drmartinez_1"
+    }
+  },
+  {
+    "id": "R3",
+    "nombre": "Solo controles pediátricos agendados",
+    "autor": "Customer Success",
+    "fecha_creacion": "2024-06-28T10:00:00-04:00",
+    "ultima_modificacion": "2024-06-28T15:00:00-04:00",
+    "activo": true,
+    "condiciones": {
+      "and": [
+        {"campo": "especialidad", "operador": "==", "valor": "pediatría"},
+        {"campo": "tipo_atencion", "operador": "==", "valor": "control"},
+        {"campo": "estado_cita", "operador": "==", "valor": "agendada"}
+      ]
+    },
+    "accion": {
+      "tipo": "contactar",
+      "via": "WhatsApp",
+      "plantilla": "template_pediatricos_1"
+    }
+  },
+  {
+    "id": "R4",
+    "nombre": "Excluir pacientes Dra. Gómez",
+    "autor": "Customer Success",
+    "fecha_creacion": "2024-06-28T10:00:00-04:00",
+    "ultima_modificacion": "2024-06-28T15:00:00-04:00",
+    "activo": true,
+    "condiciones": {
+      "and": [
+        {"campo": "rut_profesional", "operador": "==", "valor": "15678432-9"}
+      ]
+    },
+    "accion": {
+      "tipo": "excluir"
+    }
+  },
+  {
+    "id": "R5a",
+    "nombre": "Cardiología: contactar 5 días antes (todos)",
+    "autor": "Customer Success",
+    "fecha_creacion": "2024-06-28T10:00:00-04:00",
+    "ultima_modificacion": "2024-06-28T15:00:00-04:00",
+    "activo": true,
+    "condiciones": {
+      "and": [
+        {"campo": "especialidad", "operador": "==", "valor": "cardiología"},
+        {"campo": "dias_antes", "operador": "==", "valor": 5}
+      ]
+    },
+    "accion": {
+      "tipo": "contactar",
+      "via": "WhatsApp",
+      "plantilla": "template_cardio_1"
+    },
+    "comentario": ""
+  },
+  {
+    "id": "R5",
+    "nombre": "Cardiología: contactar 5 días antes y el mismo día (todos)",
+    "autor": "Customer Success",
+    "fecha_creacion": "2024-06-28T10:00:00-04:00",
+    "ultima_modificacion": "2024-06-28T15:00:00-04:00",
+    "activo": true,
+    "condiciones": {
+      "and": [
+        { "campo": "especialidad", "operador": "==", "valor": "cardiología" },
+        {
+          "or": [
+            { "campo": "dias_antes", "operador": "==", "valor": 0 },
+            { "campo": "dias_antes", "operador": "==", "valor": 5 }
+          ]
+        }
+      ]
+    },
+    "accion": {
+      "tipo": "contactar",
+      "via": "WhatsApp",
+      "plantilla": "template_cardio_1"
+    },
+    "comentario": "Aplica para cualquier cita de cardiología 5 días antes o el mismo día."
+  }
+]
