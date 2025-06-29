@@ -1,20 +1,56 @@
 [
   {
-    "fecha_cita": "2025-07-01",
-    "especialidad": "cardiología",
-    "tipo_atencion": "primera vez",
-    "edad": 68,
-    "estado_cita": "confirmada",
-    "rut_profesional": "15678432-9",
-    "nombre_paciente": "Ana Torres"
+      "fecha_cita": "2025-07-01T09:00:00-04:00",
+      "especialidad": "cardiología",
+      "tipo_atencion": "control",
+      "edad": 30,
+      "estado_cita": "confirmada",
+      "rut_profesional": "12345678-1",
+      "nombre_paciente": "Sara Millán"
   },
   {
-    "fecha_cita": "2025-07-01",
-    "especialidad": "pediatría",
-    "tipo_atencion": "control",
-    "edad": 12,
-    "estado_cita": "confirmada",
-    "rut_profesional": "12345678-9",
-    "nombre_paciente": "Luis Castillo"
+      "fecha_cita": "2025-06-30T09:00:00-04:00",
+      "especialidad": "cardiología",
+      "tipo_atencion": "primera vez",
+      "edad": 40,
+      "estado_cita": "confirmada",
+      "rut_profesional": "11000678-1",
+      "nombre_paciente": "Oscar Morales"
+  },
+  {
+      "fecha_cita": "2025-07-06T09:00:00-04:00",
+      "especialidad": "cardiología",
+      "tipo_atencion": "primera vez",
+      "edad": 50,
+      "estado_cita": "confirmada",
+      "rut_profesional": "15678432-9",
+      "nombre_paciente": "Mario Cifuentes"
+  },
+  {
+      "fecha_cita": "2025-06-29T09:00:00-04:00",
+      "especialidad": "urología",
+      "tipo_atencion": "control",
+      "edad": 66,
+      "estado_cita": "confirmada",
+      "rut_profesional": "9111666-9",
+      "nombre_paciente": "Carlos Ruiz"
+  },
+  {
+      "fecha_cita": "2025-06-29T18:00:00-04:00",
+      "especialidad": "urología",
+      "tipo_atencion": "control",
+      "edad": 40,
+      "estado_cita": "confirmada",
+      "rut_profesional": "9111666-9",
+      "nombre_paciente": "Pedro Núñez"
+  },
+  {
+      "fecha_cita": "2025-07-03T09:00:00-04:00",
+      "especialidad": "cardiología",
+      "tipo_atencion": "primera vez",
+      "edad": 32,
+      "estado_cita": "confirmada",
+      "rut_profesional": "99887766-1",
+      "nombre_paciente": "Juan Perez"
   }
 ]

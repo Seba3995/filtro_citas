@@ -11,10 +11,6 @@ from datetime import datetime, timedelta, timezone
 from app.models import Cita
 from app.filter_engine import filtrar_citas, cargar_reglas
 from typing import Literal
-import sys
-import os
-# Asegurar que el directorio raíz del proyecto esté en el path para importar módulos
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 # Fecha base fija para todos los tests (Chile invierno UTC-4)
 NOW = datetime(2025, 6, 28, 9, 0, 0, tzinfo=timezone(timedelta(hours=-4)))
@@ -114,4 +110,3 @@ def test_regla_5():
     assert any(r.paciente == "Positivo R5_5" and r.accion == "contactar" for r in resultados)
     assert any(r.paciente == "Positivo R5_0" and r.accion == "contactar" for r in resultados)
     assert any(r.paciente == "Negativo R5" and r.accion != "contactar" for r in resultados)
-    

@@ -7,7 +7,7 @@ Provee:
 - Aplicación de acciones definidas externamente para decidir el contacto a pacientes.
 """
 from app.models import Cita, ResultadoFiltro
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 from datetime import datetime, timezone
 import operator
 import json
@@ -24,18 +24,23 @@ OPERATORS = {
     "not in": lambda a, b: a not in b
 }
 
-def calcular_dias_antes(fecha_cita: datetime) -> int:
+def calcular_dias_antes(fecha_cita: datetime, now: Optional[datetime] = None) -> int:
     """
-    Calcula los días de anticipación entre la fecha actual y la cita.
+    Calcula los días de anticipación entre now (o ahora) y la cita.
 
     @param fecha_cita: Fecha y hora de la cita (con zona horaria).
+    @param now: (opcional) Fecha base para cálculo (para pruebas).
     @return: Número de días hasta la cita.
     """
-    ahora = datetime.now(timezone.utc).astimezone(fecha_cita.tzinfo)
-    diff = (fecha_cita.date() - ahora.date()).days
+    if now is None:
+        now = datetime.now(timezone.utc).astimezone(fecha_cita.tzinfo)
+    diff = (fecha_cita.date() - now.date()).days
     return diff
 
-def eval_condicion(cita: Cita, condicion: Dict[str, Any]) -> bool:
+def eval_condicion(cita: Cita,
+                   condicion: Dict[str, Any],
+                   now: Optional[datetime] = None
+                   ) -> bool:
     """
     Evalúa una condición lógica simple o compuesta sobre una cita.
 
@@ -59,7 +64,7 @@ def eval_condicion(cita: Cita, condicion: Dict[str, Any]) -> bool:
 
     # Permite campos calculados (ej: días_antes)
     if campo == "dias_antes":
-        left = calcular_dias_antes(cita.fecha_cita)
+        left = calcular_dias_antes(cita.fecha_cita, now=now)
     else:
         left = getattr(cita, campo)
         if isinstance(left, str):
@@ -71,7 +76,11 @@ def eval_condicion(cita: Cita, condicion: Dict[str, Any]) -> bool:
         return OPERATORS[operador_str](left, valor)
     raise ValueError(f"Operador no soportado: {operador_str}")
 
-def filtrar_citas(citas: List[Cita], reglas: List[Dict[str, Any]]) -> List[ResultadoFiltro]:
+def filtrar_citas(
+        citas: List[Cita],
+        reglas: List[Dict[str, Any]],
+        now: Optional[datetime] = None
+        ) -> List[ResultadoFiltro]:
     """
     Filtra citas médicas según reglas mini-DSL externas,
     Cada cita será evaluada contra las reglas en orden, soportando exclusión prioritaria
@@ -86,7 +95,7 @@ def filtrar_citas(citas: List[Cita], reglas: List[Dict[str, Any]]) -> List[Resul
     for cita in citas:
         accion_aplicada = False
         for regla in reglas:
-            if eval_condicion(cita, regla["condiciones"]):
+            if eval_condicion(cita, regla["condiciones"], now=now):
                 accion = regla["accion"]
                 motivo = regla.get("nombre") or regla.get("id") or "Regla aplicada"
 
