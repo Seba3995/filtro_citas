@@ -23,7 +23,7 @@ El sistema permite aplicar reglas negocio sobre citas médicas provenientes de A
 
 ## 🏗️ Arquitectura General
 
-> ![Arquitectura General](/imgs/arquitectura_general.jpg)
+> ![Arquitectura General](/imgs/arquitectura_general.png)
 *Representación el flujo ETL completo, desde la consulta a las APIs hospitalarias hasta el contacto con pacientes, resalta los **supuestos** clave de integración y filtrado.*
 
 
