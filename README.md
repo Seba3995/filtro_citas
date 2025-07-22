@@ -28,7 +28,7 @@ El sistema permite aplicar reglas negocio sobre citas médicas provenientes de A
 
 
 
-> ![Zoom Filtrar Citas](/imgs/zoom_filtrar_citas.jpg)
+> ![Zoom Filtrar Citas](/imgs/zoom_filtrar_citas.gif)
 *Detalle de la arquitectura interna del proceso `Filtrar citas`*
 
 
